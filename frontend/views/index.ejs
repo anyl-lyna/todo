@@ -9,15 +9,25 @@
 <body>
   <div class="container">
     <h1>To-Do List</h1>
+
+    <!-- Display Log Out Button -->
+    <form action="/logout" method="GET" style="text-align: right;">
+      <button type="submit">Log Out</button>
+    </form>
+
+    <!-- Add Task Form -->
     <form action="/add-task" method="POST">
       <input type="text" name="task" placeholder="Add a new task" required>
       <button type="submit">Add</button>
     </form>
+
+    <!-- Task List -->
     <ul>
       <% tasks.forEach((task, index) => { %>
         <li>
+          <!-- Delete Task Form -->
           <form action="/delete-task" method="POST" style="display: inline;">
-            <input type="hidden" name="taskIndex" value="<%= index %>">
+            <input type="hidden" name="task" value="<%= task %>">
             <button type="submit">❌</button>
           </form>
           <%= task %>
